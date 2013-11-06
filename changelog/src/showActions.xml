@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+<!-- actions about show -->
+	<package name="show" namespace="/show" extends="struts-default">
+		<action name="showAllProject" class="actions.allProjectsAction" method="execute">
+			<result name="success">/show/main/mainAllProject.jsp</result>
+			<result name="error">/show/main/emptyRec.jsp</result>
+		</action> 
+		<action name="showAllProgram" class="actions.allProgramAction" method="execute">
+			<result name="success">/show/main/mainAllProgram.jsp</result>
+			<result name="error">/show/main/emptyRec.jsp</result>
+		</action>
+		<action name="showAllVersion" class="actions.allVersionAction" method="execute">
+			<result name="success">/show/main/mainAllVersion.jsp</result>
+			<result name="error">/show/main/emptyRec.jsp</result>
+		</action>
+		<action name="showMyChange" class="actions.allMyChangeAction" method="execute">
+			<result name="success">/show/main/mainMyChange.jsp</result>
+			<result name="error">/show/main/emptyRec.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+		<action name="showRacentChange" class="actions.racentChangeAction" method="execute">
+			<result name="success">/show/main/mainRacentChange.jsp</result>
+			<result name="error">/show/main/emptyRec.jsp</result>
+		</action>
+		<action name="showAllChange" class="actions.allMyChangeAction" method="getAllChange">
+			<result name="success">/show/main/mainAllChange.jsp</result>
+		</action>
+	</package>
+	
+	<package name="individ" namespace="/show" extends="struts-default">
+		<action name="getProject" class="actions.projectActions" method="getProject">
+    		<result name="success">/show/individ/project.jsp</result>
+    		<result name="error">/show/individ/individ_error.jsp</result>
+    	</action>
+    	<action name="getProgram" class="actions.programActions" method="getProgram">
+    		<result name="success">/show/individ/program.jsp</result>
+    		<result name="error">/show/individ/individ_error.jsp</result>
+    	</action>
+    	<action name="getVersion" class="actions.versionActions" method="getVersion">
+    		<result name="success">/show/individ/version.jsp</result>
+    		<result name="error">/show/individ/individ_error.jsp</result>
+    	</action>
+    	<action name="getChange" class="actions.changlogActions" method="getChange">
+    		<result name="success">/show/individ/change.jsp</result>
+    		<result name="error">/show/individ/individ_error.jsp</result>
+    	</action>
+	</package>
+	<!-- remove actions -->
+	<package name="remove" namespace="/func" extends="struts-default">
+		<action name="removeProject" class="actions.projectActions" method="removeProject">
+			<result name="success" type="redirect">/show/showAllProject.action</result>
+			<result name="error">/func/delete_err.jsp</result>
+		</action>
+		<action name="removeProgram" class="actions.programActions" method="removeProgram">
+			<result name="success" type="redirect">/show/getProject.action?projectId=${projectId}</result>
+			<result name="error">/func/delete_err.jsp</result>
+		</action>
+		<action name="removeVersion" class="actions.versionActions" method="removeVersion">
+			<result name="success" type="redirect">/show/getProgram.action?programId=${programId}</result>
+			<result name="error">/func/delete_err.jsp</result>
+		</action>
+		<action name="removeChange" class="actions.changlogActions" method="removeChange">
+			<result name="success" type="redirect">/show/getVersion.action?versionId=${versionId}</result>
+			<result name="error">/func/delete_err.jsp</result>
+		</action>
+		<action name="removeSelfChange" class="actions.changlogActions" method="removeSelfChange">
+			<result name="success" type="redirect">/show/getVersion.action?versionId=${versionId}</result>
+			<result name="title">/func/delete_title_err.jsp</result>
+			<result name="error">/func/delete_err.jsp</result>
+		</action>
+		<action name="removeChangesByVID" class="actions.versionActions" method="removeAllChanges">
+			<result name="success" type="redirect">/show/getVersion.action?versionId=${versionId}</result>
+			<result name="error">/func/delete_err.jsp</result>
+		</action>
+	</package>
+</struts>
