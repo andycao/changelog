@@ -6,7 +6,7 @@
 <hibernate-configuration>
 	<session-factory>
 	<!-- 指定database url -->
-	<property name="connection.url">jdbc:oracle:thin:@10.0.52.49:1521:orcl</property>
+	<property name="connection.url">jdbc:oracle:thin:@10.0.53.242:1521:orcl</property>
 	<!-- 制定用户名 -->
 	<property name="connection.username">CHANGELOG</property>
 	<!-- 密码 -->

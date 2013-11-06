@@ -27,7 +27,7 @@
 		<p>工程名称：<s:property value="programResult.programName"/></p>
 		<p>开始时间：<s:property value="programResult.startTime"/></p>
 		<p>最后更改时间：<s:property value="programResult.lastChangeTime"/></p>
-		<div id="break">工程详细信息：<s:property value="programResult.detail"/></div>
+		<p id="break">工程详细信息：<s:property value="programResult.detail"/></p>
 		<p><a href="getProject.action?projectId=<s:property value="programResult.projectId" />">所属项目ID：<s:property value="programResult.projectId" /></a></p>
 		<p>包含版本数：<s:property value="#request.list.size" /></p>
 		<%if(tit.equals("编辑")){ %>

@@ -1,9 +1,6 @@
 package test;
 
 
-import java.io.FileNotFoundException;
-import java.util.Formatter;
-
 import org.hibernate.Session;
 
 import changelog.User;
@@ -11,7 +8,7 @@ import changelog.User;
 import util.HibernateUtil;
 public class Test extends junit.framework.TestCase{
 
-	public void test() throws FileNotFoundException{
+	public void test(){
 		try{
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			User user1 = (User) session.get(User.class, 1);
@@ -19,6 +16,5 @@ public class Test extends junit.framework.TestCase{
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		
 	}  
 }
