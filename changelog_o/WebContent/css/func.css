@@ -1,0 +1,8 @@
+@CHARSET "UTF-8";
+
+.form_s{
+	width:350px;
+}
+.form_s form {
+	text-align:left;
+}

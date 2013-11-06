@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+@import url("welcome_style.css");
+#main{
+	width:750px;
+}
+#main .show{
+	width:750px;
+}
+#main .show table{
+	width:650px;
+	margin:0px auto;
+}
+#main .show h3{
+	text-align:center;
+}
+#main .show table tr #th1{
+	width:10px;
+}
+#main .show p{
+	word-wrap:break-word;
+}
+#main .show label{
+	font-weight:bold;
+	float:right;
+}

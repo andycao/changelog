@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	
+<!-- hibernate mapping 映射文件 -->
+<hibernate-mapping>
+	<!-- 每一个class对应一个持久化对象 -->
+	<!-- changelog project all classes -->
+	<class name="changelog.User" table="USER_WEB">
+		<id name="userID" column="UserID" type="int">
+			<generator class="sequence">
+			<param name="sequence">seq_user_id</param>
+			</generator>
+		</id>
+		<property name="name" column="Name" type="string"></property>
+		<property name="title" column="Title" type="string"></property>
+		<property name="password" column="Password" type="string"></property>
+	</class>
+	<class name="changelog.theProject" table="PROJECT">
+		<id name="projectId" column="ProjectID" type="int">
+			<generator class="sequence">
+			<param name="sequence">seq_project_id</param>
+			</generator>
+		</id>
+		<property name="projectName" column="ProjectName" type="string"></property>
+		<property name="startTime" column="StartTime" type="date"></property>
+		<property name="lastChangeTime" column="LastChangeTime" type="date"></property>
+		<property name="projectDetail" column="ProjectDetail" type="text"></property>
+	</class>
+	<class name="changelog.Program" table="PROGRAM">
+		<id name="programId" column="ProgramID" type="int">
+			<generator class="sequence">
+			<param name="sequence">seq_program_id</param>
+			</generator>
+		</id>
+		<property name="programName" column="ProgramName" type="string"></property>
+		<property name="startTime" column="StartTime" type="date"></property>
+		<property name="lastChangeTime" column="LastChangedTime" type="date"></property>
+		<property name="detail" column="Detail" type="text"></property>
+		<property name="projectId" column="ProjectID" type="int"></property>
+	</class>
+	<class name="changelog.Version" table="VERSION">
+		<id name="versionId" column="VersionID" type="int">
+			<generator class="sequence">
+			<param name="sequence">seq_version_id</param>
+			</generator>
+		</id>
+		<property name="versionName" column="VersionName" type="string"></property>
+		<property name="programId" column="ProgramID" type="int"></property>
+		<property name="detail" column="Detail" type="text"></property>
+	</class>
+	<class name="changelog.Change" table="CHANGES">
+		<id name="changeId" column="ChangeID" type="int">
+			<generator class="sequence">
+			<param name="sequence">seq_change_id</param>
+			</generator>
+		</id>
+		<property name="programId" column="ProgramID" type="int"></property>
+		<property name="versionId" column="VersionID" type="int"></property>
+		<property name="projectId" column="ProjectID" type="int"></property>
+		<property name="userId" column="UserID" type="int"></property>
+		<property name="changeFile" column="ChangeFile" type="string"></property>
+		<property name="changeDate" column="ChangeTime" type="date"></property>
+		<property name="changeDetail" column="ChangeDetail" type="text"></property>
+	</class>
+	
+</hibernate-mapping>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+<!-- user actions -->
+<bean id="myDatabase" class="changelog.myDb"></bean>  
+<bean id="userAction" class="actions.userActions" scope="prototype">  
+    <property name="db" ref="myDatabase"></property>
+</bean>
+
+<!-- mydatabase searcher -->
+<bean id="searcher" class="mydbsearcher.mydbsearcher"></bean>
+
+<!-- project,program,version,changes actions -->
+<bean id="projectActions" class="actions.projectActions">
+	<property name="searcher" ref="searcher"></property>
+</bean>
+<bean id="programActions" class="actions.programActions">
+	<property name="searcher" ref="searcher"></property>
+</bean>
+<bean id="versionActions" class="actions.versionActions">
+	<property name="searcher" ref="searcher"></property>
+</bean>
+<bean id="changeActions" class="actions.changlogActions">
+	<property name="searcher" ref="searcher"></property>
+</bean>
+
+<!-- show actions -->
+<bean id="getAllProject" class="actions.allProjectsAction">
+    <property name="searcher" ref="searcher"></property>
+</bean>
+<bean id="getAllProgram" class="actions.allProgramAction">
+	<property name="searcher" ref="searcher"></property>
+</bean>
+<bean id="getAllVersion" class="actions.allVersionAction">
+	<property name="searcher" ref="searcher"></property>
+</bean>
+<bean id="getUserChange" class="actions.allMyChangeAction">
+	<property name="searcher" ref="searcher"></property>
+</bean>
+<bean id="getRacentChange" class="actions.racentChangeAction">
+	<property name="searcher" ref="searcher"></property>
+</bean>
+
+<!-- add action -->
+<bean id="preAddActions" class="preaddactions.preAddAction"></bean>
+
+<bean id="preEditActions" class="preaddactions.preEditAction">
+	<property name="searcher" ref="searcher"></property>
+</bean>
+</beans>
