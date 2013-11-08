@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+<constant name="struts.action.extension" value="action"></constant>
+<constant name="struts.ui.theme" value="xhtml"/>  
+<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+<constant name="struts.devMode" value="false" />
+<constant name="struts.custom.i18n.resources" value="changelogRes" />    
+<package name="default" namespace="/" extends="struts-default">
+		<global-results>
+			<result name="login">/login.jsp</result>
+			<result name="exception">/error.jsp</result>
+			<result name="index" type="redirect">index.action</result>
+			<result name="input" type="redirect">welcome.action</result>
+		</global-results>
+		<action name="index">
+			<result>/index.jsp</result>
+		</action>
+		<action name="welcome">
+			<result>/show/welcome.jsp</result>
+		</action>
+    </package>
+    <!-- user related actions -->
+    <package name="user_actions" extends="default">
+    	<action name="login" class="actions.userActions" method="login">
+			<result name="success" type="redirect">welcome.action</result>
+			<result name="error">/login.jsp</result>
+		</action>
+		<action name="register" class="actions.userActions" method="register">
+			<result name="success" type="redirect">welcome.action</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="logout" class="actions.userActions" method="logout">
+			<result type="redirect">index.action</result>
+		</action>
+		
+    </package>
+    
+    <!-- add items actions -->
+    <package name="changelog_actions" namespace="/func" extends="default">
+    	<action name="addProject" class="actions.projectActions" method="addProject">
+    		<result name="success" type="redirect">/show/showAllProject.action</result>
+    		<result name="error" >adderror.jsp</result>
+    		<result name="input">addProject.jsp</result>
+    	</action>
+    	<action name="addProgram" class="actions.programActions" method="addProgram">
+    		<result name="success" type="redirect">/show/getProject.action?projectId=${projectId}
+    		</result>
+    		<result name="error">adderror.jsp</result>
+    		<result name="input">addProgram.jsp</result>
+    	</action>
+    	<action name="addVersion" class="actions.versionActions" method="addVersion">
+    		<result name="success" type="redirect">/show/getProgram.action?programId=${programId}
+    		</result>
+    		<result name="error">adderror.jsp</result>
+    		<result name="input">addVersion.jsp</result>
+    	</action>
+    	<action name="addChangelog" class="actions.changlogActions" method="addChangelog">
+    		<result name="success" type="redirect">/show/getVersion.action?versionId=${versionId}
+    		</result>
+    		<result name="error">adderror.jsp</result>
+    		<result name="input">addChangelog.jsp</result>
+    	</action>
+    	
+    	<action name="editProject" class="actions.projectActions" method="editProject">
+    		<result name="success" type="redirect">/show/getProject.action?projectId=${projectId}
+    		</result>
+    		<result name="error">/func/delete_err.jsp</result>
+    	</action>
+    	<action name="editProgram" class="actions.programActions" method="editProgram">
+    		<result name="success" type="redirect">/show/getProgram.action?programId=${programId}		
+			</result>
+    		<result name="error">/func/delete_err.jsp</result>
+    	</action>
+    	<action name="editVersion" class="actions.versionActions" method="editVersion">
+    		<result name="success" type="redirect">/show/getVersion.action?versionId=${versionId}
+    		</result>
+    		<result name="error">/func/delete_err.jsp</result>
+    	</action>
+    	<action name="editChange" class="actions.changlogActions" method="editChange">
+    		<result name="success" type="redirect">/show/getChange.action?changeId=${changeId} 			
+			</result>
+    		<result name="error">/func/delete_err.jsp</result>
+    		<result name="usererror">/func/error_edit_user.jsp</result>
+    	</action>
+    </package>
+    
+    <!-- preadd action -->
+	<package name="preAddActionPackage" namespace="/func" extends="default">
+		<action name="preAddProgram" class="preaddactions.preAddAction" method="preAdd">
+			<result name="success">addProgram.jsp</result>
+		</action>
+		<action name="preAddVersion" class="preaddactions.preAddAction" method="preAdd">
+			<result name="success">addVersion.jsp</result>
+		</action>
+		<action name="preAddChange" class="preaddactions.preAddAction" method="preAdd">
+			<result name="success">addChangelog.jsp</result>
+		</action>
+	</package>
+	
+	<!-- preEdit action -->
+	<package name="preEditActionPackage" namespace="/func" extends="default">
+		<action name="preEditProject" class="preaddactions.preEditAction" method="preEditProject">
+			<result name="success">editProject.jsp</result>
+		</action>
+		<action name="preEditProgram" class="preaddactions.preEditAction" method="preEditProgram">
+			<result name="success">editProgram.jsp</result>
+		</action>
+		<action name="preEditVersion" class="preaddactions.preEditAction" method="preEditVersion">
+			<result name="success">editVersion.jsp</result>
+		</action>
+		<action name="preEditChange" class="preaddactions.preEditAction" method="preEditChange">
+			<result name="success">editChange.jsp</result>
+		</action>
+	</package>
+    <include file="./showActions.xml"/>
+    <!-- Add packages here -->
+</struts>

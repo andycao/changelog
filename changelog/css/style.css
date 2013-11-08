@@ -1,0 +1,76 @@
+@CHARSET "UTF-8";
+body{
+ width:100%;
+ margin:0 auto;
+ font-family:arial;
+ background-color:#F0FFF0;
+ font-family:微软雅黑;
+ font-size:15px;
+}
+h1, h2{
+	text-transform:uppercase;
+}
+a{
+ color:#2828FF;
+ text-decoration:none;
+ font-size:16px;
+}
+
+a:hover{
+ color:#613030;
+ text-decoration:underline;
+}
+/* head div */
+#header{
+	width:800px;
+	margin:4px auto;
+	text-align:center;
+	font-family:宋体;
+}
+/* main div*/
+#main{
+	margin:0px auto;
+	margin-top:40px;
+	text-align:center;
+}
+.comments {
+	margin-top:80px;
+}
+/* buttons******************************* */
+.buttons{
+	text-align:center;
+	margin:10px auto;
+	width:180px;
+}
+.buttons a{
+	display:block;
+	height:36px;
+	margin:5px 10px;
+	line-height:36px;
+	float:left;
+	text-align:center;
+	background:url(../images/button2_sp.gif) no-repeat 0 0;
+	color:#844200;
+	font-size:14px;
+	font-weight:bold;
+	text-decoration:none;
+	padding-left:15px;
+}
+.buttons a span{
+	display:block;
+	background:url(../images/button2_sp.gif) no-repeat right 0;
+	padding-right:15px;
+}
+.buttons a:hover{
+	background:url(../images/button2_sp.gif) no-repeat 0 -36px;
+}
+.buttons a:hover span{
+	background:url(../images/button2_sp.gif) no-repeat right -36px;
+}
+#clear{
+	clear:both;
+}
+.form_s{
+	width:250px;
+	margin:5px auto;
+}
