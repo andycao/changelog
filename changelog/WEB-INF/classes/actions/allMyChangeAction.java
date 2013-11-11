@@ -10,7 +10,8 @@ import mydbsearcher.*;
 public class allMyChangeAction extends ActionSupport{
 	private mydbsearcher searcher = new mydbsearcher();
 	private List<Change> list;
-
+	//user manager
+	private UserManager userManager = new UserManager();
 	/**
 	 * return success or error
 	 * error for empty results
@@ -50,7 +51,11 @@ public class allMyChangeAction extends ActionSupport{
 		return list;
 	}
 
+	/*
+	 * set the result list
+	 */
 	public void setList(List<Change> list) {
 		this.list = list;
 	}
+	
 }

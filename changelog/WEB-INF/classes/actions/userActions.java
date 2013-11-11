@@ -2,21 +2,26 @@ package actions;
 import java.util.List;
 import java.util.Map;
 
+import mydbsearcher.UserManager;
 import mydbsearcher.mydbsearcher;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import util.HibernateUtil;
 
 import changelog.User;
 import changelog.myDb;
 
+import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class userActions extends ActionSupport{
+	private int userid;
+	private User showUser;
 	private String username;
 	private String password;
 	private String[] select1;
@@ -41,16 +46,16 @@ public class userActions extends ActionSupport{
 			if(list.size() == 0){
 				user = db.addUser(username, select1[0], password);
 				setCurrentUser(user);
-				return this.SUCCESS;
+				return Action.SUCCESS;
 			} else{
 				this.addActionError(getText("error.register"));
-				return this.ERROR;
+				return Action.ERROR;
 			}
 		}
 		catch(Exception e){
 			System.err.println(e);
 			setCurrentUser(null);
-			return this.ERROR;
+			return Action.ERROR;
 		}
 	}
 
@@ -100,6 +105,70 @@ public class userActions extends ActionSupport{
 		//remove user attribute from http session
 		session.remove("user");
 		return SUCCESS;
+	}
+	/**
+	 * show use detail, userid first, user name second, current user third, or null
+	 * @return success
+	 */
+	public String showUser(){
+		if(userid != 0){
+			//use userid
+			UserManager um = new UserManager();
+			showUser = um.getUser(userid);
+			if(showUser != null)
+				return Action.SUCCESS;
+			else{
+				this.addActionError("查询用户错误");
+				return Action.ERROR;
+			}
+		}else if(username != null){
+			//use username
+			UserManager um = new UserManager();
+			showUser = um.getUser(username);
+			if(showUser != null)
+				return Action.SUCCESS;
+			else{
+				this.addActionError("查询用户错误");
+				return Action.ERROR;
+			}
+		}else if(getCurrentUser()!= null){
+			//use current user
+			showUser = getCurrentUser();
+			if(showUser != null)
+				return Action.SUCCESS;
+			else{
+				this.addActionError("查询用户错误");
+				return Action.ERROR;
+			}
+		}else{
+			return Action.LOGIN;
+		}
+	}
+	/**
+	 * delete user
+	 * @return string 
+	 */
+	public String deleteUser(){
+		UserManager um = new UserManager();
+		boolean del = um.deleteUser(userid);
+		if(!del){
+			addActionError("用户无法删除，可能是因为其更改记录未清空");
+			return Action.ERROR;
+		}
+		if(getCurrentUser().getUserID() == userid)
+			return Action.INPUT;
+		else
+			return Action.SUCCESS;
+	}
+	
+	public String editPassword(){
+		UserManager um = new UserManager();
+		User user = getCurrentUser();
+		boolean bo = um.editPasswordByID(user.getUserID(), password);
+		if(bo)
+			return Action.SUCCESS;
+		else
+			return Action.ERROR;
 	}
 	
 	public String getUsername() {
@@ -157,5 +226,33 @@ public class userActions extends ActionSupport{
 
 	public void setPermit(String permit) {
 		this.permit = permit;
+	}
+
+	/**
+	 * @return the userid
+	 */
+	public int getUserid() {
+		return userid;
+	}
+
+	/**
+	 * @param userid the userid to set
+	 */
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+
+	/**
+	 * @return the showUser
+	 */
+	public User getShowUser() {
+		return showUser;
+	}
+
+	/**
+	 * @param showUser the showUser to set
+	 */
+	public void setShowUser(User showUser) {
+		this.showUser = showUser;
 	}
 }

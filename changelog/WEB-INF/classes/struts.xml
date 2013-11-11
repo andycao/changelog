@@ -35,7 +35,23 @@
 		<action name="logout" class="actions.userActions" method="logout">
 			<result type="redirect">index.action</result>
 		</action>
-		
+    </package>
+    
+    <package name="user_manage" namespace="/user" extends="default">
+    	<action name="showuser" class="actions.userActions" method="showUser">
+			<result name="success">/user/userpage.jsp</result>
+			<result name="error" type="redirect">welcome.action</result>
+			<result name="login">../login.jsp</result>
+		</action>
+		<action name="deleteuser" class="actions.userActions" method="deleteUser">
+			<result name="success" type="redirect">welcome.action</result>
+			<result name="error">user-error.jsp</result>
+			<result name="input" type="redirect">logout.action</result>
+		</action>
+		<action name="editPassword" class="actions.userActions" method="editPassword">
+			<result name="success" type="redirect">../welcome.action</result>
+			<result name="error" type="redirect">logout.action</result>
+		</action>
     </package>
     
     <!-- add items actions -->

@@ -27,9 +27,13 @@
 		<tr>
 		<td><label>改变文件：</label></td><td><s:property value="changeResult.changeFile"/></td>
 		</tr>
-		<tr>
+
+		<!-- tr>
 		<td><label>更改人ID：</label></td><td><s:property value="changeResult.userId" /></td>
-		</tr>
+		</tr -->
+
+		<tr>
+		<td><label>更改用户：</label></td><td><s:property value="changeUserName" /></td></tr>
 		<tr>
 		<td><label>详细信息：</label></td><td><s:property value="changeResult.changeDetail"/></td>
 		</tr>

@@ -19,7 +19,7 @@
 	<th>工程名称</th>
 	<th>开始时间</th>
 	<th>更改时间</th>
-	<th>项目ID</th></tr>
+	<th>所属项目ID</th></tr>
 	<s:iterator value="list" status="count">
 		<s:if test="#count.odd==true">
 		<tr>

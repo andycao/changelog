@@ -17,10 +17,10 @@
 <h3>我的更改内容</h3>
 <table>
 <tr><th>更改ID</th>
-	<th>版本ID</th>
+	<th>所属版本ID</th>
 	<th>更改时间</th>
 	<th>更改文件</th>
-	<th>工程ID</th></tr>
+	</tr>
 	<s:iterator value="list" status="count">
 		<s:if test="#count.odd==true">
 		<tr>
@@ -32,7 +32,6 @@
 		<td><a href="getVersion.action?versionId=<s:property value='versionId' />"><s:property value="versionId" /></a></td>
 		<td><a href="getChange.action?changeId=<s:property value='changeId' />"><s:date name="changeDate" format="MM-dd"/></a></td>
 		<td><s:property value="changeFile"/></td>
-		<td><a href="getProject.action?projectId=<s:property value='projectId' />"><s:property value="projectId" /></a></td>
 		</tr>
 	</s:iterator> 
 </table>

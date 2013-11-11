@@ -25,13 +25,15 @@
 	<br>
 	<a href="/changelog/show/showMyChange.action" target="welcomemain">我的更改</a>
 	<a href="/changelog/show/showRacentChange.action" target="welcomemain">最近更改</a>
-	<% if(tit.equals("edit")){ %>
+	
 	<div class="add_function">
+	<% if(tit.equals("edit")){ %>
 	<a href="/changelog/func/addProject.jsp" target="welcomemain">添加项目</a>
 	<a href="/changelog/func/addProgram.jsp" target="welcomemain">添加工程</a>
 	<a href="/changelog/func/addVersion.jsp" target="welcomemain">添加版本</a>
-	</div>
 	<% } %>
+	<a href="/changelog/user/showuser.action" target="welcomemain">用户管理</a>
+	</div>
 	<div id="clear"></div>
 </div>
 </body>

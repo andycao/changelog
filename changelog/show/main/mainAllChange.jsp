@@ -1,7 +1,10 @@
-<%@page import="org.hibernate.Session"%>
+<%@page import="org.hibernate.Session,util.myutil"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%
+	request.setAttribute("users", myutil.getUsers());
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,11 +19,12 @@
 <h3>所有更改内容</h3>
 <table>
 <tr><th>更改ID</th>
-	<th>版本ID</th>
+	<th>所属版本ID</th>
 	<th>更改时间</th>
 	<th>更改文件</th>
-	<th>更改人ID</th>
-	<th>工程ID</th></tr>
+	<th>更改人</th>
+	</tr>
+	<% int i = 1; %>
 	<s:iterator value="list" status="count">
 		<s:if test="#count.odd==true">
 		<tr>
@@ -32,8 +36,7 @@
 		<td><a href="getVersion.action?versionId=<s:property value='versionId' />"><s:property value="versionId" /></a></td>
 		<td><a href="getChange.action?changeId=<s:property value='changeId' />"><s:date name="changeDate" format="MM-dd"/></a></td>
 		<td><s:property value="changeFile"/></td>
-		<td><s:property value="userId"/></td>
-		<td><a href="getProject.action?projectId=<s:property value='projectId' />"><s:property value="projectId" /></a></td>
+		<td>${users[userId]}</td>
 		</tr>
 	</s:iterator> 
 </table>

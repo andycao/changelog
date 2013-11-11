@@ -2,7 +2,7 @@ package actions;
 
 import java.util.*;
 
-import mydbsearcher.mydbsearcher;
+import mydbsearcher.*;
 
 import changelog.Change;
 import changelog.User;
@@ -17,8 +17,11 @@ public class changlogActions extends ActionSupport{
 	private String changeFile;
 
 	private String belongedVersionName;
+	private String changeUserName;
+	
 	//searcher
 	private mydbsearcher searcher = new mydbsearcher();
+	private UserManager userManager = new UserManager();
 	//getchange obj result
 	private Change changeResult;
 	//for getchange action
@@ -157,8 +160,10 @@ public class changlogActions extends ActionSupport{
 	}
 
 	public void setChangeResult(Change changeResult) {
-		//get the version name
+		//set the version name
 		belongedVersionName = searcher.getVersionByID(changeResult.getVersionId()).getVersionName();
+		//set the changer name
+		changeUserName = userManager.getUserNameByID(changeResult.getUserId());
 		this.changeResult = changeResult;
 	}
 	
@@ -184,6 +189,18 @@ public class changlogActions extends ActionSupport{
 	 */
 	public void setBelongedVersionName(String belongedVersionName) {
 		this.belongedVersionName = belongedVersionName;
+	}
+	/**
+	 * @return the changeUserName
+	 */
+	public String getChangeUserName() {
+		return changeUserName;
+	}
+	/**
+	 * @param changeUserName the changeUserName to set
+	 */
+	public void setChangeUserName(String changeUserName) {
+		this.changeUserName = changeUserName;
 	}
 	
 }

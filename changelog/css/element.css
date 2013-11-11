@@ -10,7 +10,7 @@
 }
 #main .show div{
 	width:45%;
-	margin:15px 10px;
+	margin:30px 10px;
 	float:left;
 }
 #main .show .detail{
@@ -22,9 +22,14 @@
 #main .show .detail h3{
 	text-align:center;
 }
-#main .show .lists table{
+#main .lists table{
 	display:inline;
-	width:400px;
+	width:800px;
+}
+#main .lists table th,td{
+	width:120px;
+	margin:1px 20px;
+	
 }
 #break{
 	word-wrap:break-word;
