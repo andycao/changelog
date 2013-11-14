@@ -24,6 +24,8 @@ public class userActions extends ActionSupport{
 	private User showUser;
 	private String username;
 	private String password;
+	private String repeat_password;
+	
 	private String[] select1;
 	private myDb db  = new mydbsearcher();
 	private String permit;
@@ -154,21 +156,50 @@ public class userActions extends ActionSupport{
 		if(!del){
 			addActionError("用户无法删除，可能是因为其更改记录未清空");
 			return Action.ERROR;
-		}
-		if(getCurrentUser().getUserID() == userid)
-			return Action.INPUT;
-		else
+		}else{
 			return Action.SUCCESS;
+		}
 	}
 	
 	public String editPassword(){
 		UserManager um = new UserManager();
 		User user = getCurrentUser();
+		//check whether 2 password are same
+		if(!repeat_password.equals(password)){
+			addActionError("两次输入的密码不相等");
+			return Action.ERROR;
+		}
+		//edit password
 		boolean bo = um.editPasswordByID(user.getUserID(), password);
 		if(bo)
 			return Action.SUCCESS;
-		else
+		else{
+			addActionError("修改密码错误");
 			return Action.ERROR;
+		}
+	}
+	
+	public String editTitle(){
+		//check permit
+		if(!permit.equals(getText("admin.register"))){
+			addActionError("授权码错误，无法修改");
+			return ERROR;
+		}
+
+		UserManager um = new UserManager();
+		User user = getCurrentUser();
+		
+		//do edit title
+		boolean bo = um.editTitleByUserID(user.getUserID(), select1[0]);
+		if(bo){
+			//relogin for latest info
+			this.login();
+			return Action.SUCCESS;
+		}
+		else{
+			addActionError("修改权限错误,请再试一次");
+			return Action.ERROR;
+		}
 	}
 	
 	public String getUsername() {
@@ -254,5 +285,19 @@ public class userActions extends ActionSupport{
 	 */
 	public void setShowUser(User showUser) {
 		this.showUser = showUser;
+	}
+
+	/**
+	 * @return the repeat_password
+	 */
+	public String getRepeat_password() {
+		return repeat_password;
+	}
+
+	/**
+	 * @param repeat_password the repeat_password to set
+	 */
+	public void setRepeat_password(String repeat_password) {
+		this.repeat_password = repeat_password;
 	}
 }

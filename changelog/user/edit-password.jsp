@@ -11,8 +11,10 @@
 </head>
 <body>
 <s:label>修改密码</s:label>
-<s:form action="editPassword.action" target="_parent">
+<s:actionerror/>
+<s:form action="editPassword.action">
 	<s:password label="新密码" name="password"></s:password>
+	<s:password label="请重复密码" name="repeat_password"></s:password>
 	<s:submit value="提交"></s:submit>
 	<s:reset value="重置"></s:reset>
 </s:form>

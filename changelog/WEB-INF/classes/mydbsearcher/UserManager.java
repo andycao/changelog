@@ -41,6 +41,11 @@ public class UserManager {
 		return "";//error return empty string
 	}
 	
+	/**
+	 * get a user's info by userid
+	 * @param userid
+	 * @return user object
+	 */
 	public User getUser(int userid){
 		Session session = HibernateUtil.openSession();
 		try{
@@ -58,7 +63,11 @@ public class UserManager {
 			session.close();
 		}
 	}
-	
+	/**
+	 * get a user's info by user email
+	 * @param userid
+	 * @return user object
+	 */
 	public User getUser(String username){
 		Session session = HibernateUtil.openSession();
 		try{
@@ -77,6 +86,11 @@ public class UserManager {
 		}
 	}
 	
+	/**
+	 * delete user by userid from database if the user don't has change record
+	 * @param userid
+	 * @return boolean
+	 */
 	public boolean deleteUser(int userid){
 		Session session = HibernateUtil.openSession();
 		try{
@@ -96,12 +110,32 @@ public class UserManager {
 			session.close();
 		}
 	}
+	
 	public boolean editPasswordByID(int userid,String password){
 		Session session = HibernateUtil.openSession();
 		try{
 			Transaction tr = session.beginTransaction();
 			Query query = session.createQuery("update User set Password=:password where UserID=:userid");
 			query.setString("password", password);
+			query.setInteger("userid", userid);
+			
+			query.executeUpdate();
+			tr.commit();
+			return true;
+		}catch(HibernateException e){
+			System.err.println(e);
+			return false;
+		}finally{
+			session.close();
+		}
+	}
+	
+	public boolean editTitleByUserID(int userid, String title){
+		Session session = HibernateUtil.openSession();
+		try{
+			Transaction tr = session.beginTransaction();
+			Query query = session.createQuery("update User set Title=:title where UserID=:userid");
+			query.setString("title", title);
 			query.setInteger("userid", userid);
 			
 			query.executeUpdate();

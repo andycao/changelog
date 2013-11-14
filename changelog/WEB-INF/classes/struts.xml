@@ -44,13 +44,16 @@
 			<result name="login">../login.jsp</result>
 		</action>
 		<action name="deleteuser" class="actions.userActions" method="deleteUser">
-			<result name="success" type="redirect">welcome.action</result>
+			<result name="success" type="redirect">logout.action</result>
 			<result name="error">user-error.jsp</result>
-			<result name="input" type="redirect">logout.action</result>
 		</action>
 		<action name="editPassword" class="actions.userActions" method="editPassword">
-			<result name="success" type="redirect">../welcome.action</result>
-			<result name="error" type="redirect">logout.action</result>
+			<result name="success" type="redirect">showuser.action</result>
+			<result name="error">./edit-password.jsp</result>
+		</action>
+		<action name="editTitle" class="actions.userActions" method="editTitle">
+			<result name="success" type="redirect">showuser.action</result>
+			<result name="error">./edit-title.jsp</result>
 		</action>
     </package>
     
@@ -132,5 +135,6 @@
 		</action>
 	</package>
     <include file="./showActions.xml"/>
+    <include file="./extFuncActions.xml"/>
     <!-- Add packages here -->
 </struts>

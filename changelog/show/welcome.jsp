@@ -7,7 +7,7 @@
 <frameset rows="13%,*" frameborder=no  border=0  marginwidth=0  marginheight=0 scrolling=no>
   <frame src="./show/welcometop.jsp" frameborder=no  border=0  marginwidth=0  marginheight=0  scrolling=no scrolling=no/>
   <frameset cols="26%,*" frameborder=no  border=0  marginwidth=0  marginheight=0  scrolling=no>
-  	<frame src="./show/welcomeleft.jsp" frameborder=no  border=0  marginwidth=0  marginheight=0   scrolling=no/>
+  	<frame src="./show/welcomeleft.jsp" name="welcomeleft" frameborder=no  border=0  marginwidth=0  marginheight=0   scrolling=no/>
   	<frame src="./show/welcomemain.jsp" name="welcomemain" frameborder=no  border=0  marginwidth=0  marginheight=0  scrolling=no/>
   </frameset>
 </frameset>

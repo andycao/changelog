@@ -4,6 +4,7 @@ import changelog.*;
 import java.util.List;
 import java.util.Map;
 
+import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import mydbsearcher.*;
@@ -11,7 +12,6 @@ public class allMyChangeAction extends ActionSupport{
 	private mydbsearcher searcher = new mydbsearcher();
 	private List<Change> list;
 	//user manager
-	private UserManager userManager = new UserManager();
 	/**
 	 * return success or error
 	 * error for empty results
@@ -30,6 +30,20 @@ public class allMyChangeAction extends ActionSupport{
 		else
 			return ERROR;	
 	}
+	
+	public String clearAllMyChanges(){
+		recordUpdater updater = new recordUpdater();
+		int userid = userActions.getCurrentUser().getUserID();
+		boolean bo = updater.deleteUserAllChange(userid);
+		
+		if(bo)
+			return Action.SUCCESS;
+		else{
+			addActionError("删除错误");
+			return Action.ERROR;
+		}
+	}
+	
 	/**
 	 * get all changes 
 	 * @return list of all changes

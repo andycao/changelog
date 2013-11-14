@@ -170,6 +170,29 @@ public class recordUpdater extends myDb{
 		session.clear();
 		session.close();
 	}
+	/**
+	 * delete one user's all change record
+	 * @param userid - int userid
+	 * @return boolean
+	 */
+	public boolean deleteUserAllChange(int userid){
+		Session session = HibernateUtil.openSession();
+		try{
+			Transaction tr = session.beginTransaction();
+			Query query = session.createQuery("delete Change where userId=:userid");
+			query.setInteger("userid", userid);
+			query.executeUpdate();
+			
+			tr.commit();
+			return true;
+		}catch(HibernateException e){
+			System.err.println("Hibernate Exception");
+			System.err.println(e);
+			return false;
+		}finally{
+			session.close();
+		}
+	}
 	
 	/**
 	 * clear all changes for the version

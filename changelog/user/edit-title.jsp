@@ -12,8 +12,12 @@
 </head>
 <body>
 <s:label>修改权限</s:label>
-<s:form action="">
-	
+<s:actionerror/>
+<s:form action="editTitle.action">
+	<s:label name="新权限">
+	<s:select list="{'edit','view','make'}"  name="select1" label="权限"></s:select>
+	</s:label>
+	<s:password label="授权密码" name="permit"></s:password>
 	<s:submit value="提交"></s:submit>
 	<s:reset value="重置"></s:reset>
 </s:form>

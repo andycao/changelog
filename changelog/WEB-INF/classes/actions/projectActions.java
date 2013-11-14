@@ -23,7 +23,7 @@ public class projectActions extends ActionSupport{
 	public String addProject(){
 		try{
 			//searcher extend the add method from mydb
-			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+startTime);
+//			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+startTime);
 			searcher.addProject(projectName, startTime, projectDetail);
 			return SUCCESS;
 		}catch(Exception e){
@@ -61,7 +61,7 @@ public class projectActions extends ActionSupport{
 	 */
 	public String editProject(){
 		try{
-			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`"+startTime);
+//			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`"+startTime);
 			searcher.editProject(projectId, projectName, startTime, projectDetail);
 		}catch(Exception e){
 			return ERROR;

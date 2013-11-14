@@ -10,6 +10,9 @@
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <link rel="stylesheet" type="text/css" href="../css/change_main.css">
 <script src="../js/delete-confirm.js"></script>
+<script type="text/javascript">
+ parent.welcomeleft.location.reload();
+</script>	
 <style type="text/css">
 #main .show table{
 	width:380px;
@@ -28,8 +31,9 @@
 		<tr><th>用户名:</th><td><s:property value="showUser.name" /></td></tr>
 		<tr><th>权限:</th><td><s:property value="showUser.title"/></td></tr>
 		</table>
+		<s:actionerror/>
 		<a href="edit-password.jsp">修改密码</a><br />
-		<a href="#">修改权限</a><br />
+		<a href="edit-title.jsp">修改权限</a><br />
 		<a href="../login.action" target="_parent" onclick="show_confirm('deleteuser.action?userid=<s:property value="showUser.userID"/>')">删除</a>
 	</div>
 </div>

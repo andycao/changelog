@@ -99,7 +99,7 @@ public class programActions extends ActionSupport{
 	public void setProgramResult(Program programResult) {
 		int projid = programResult.getProjectId();//get the belonged project id
 		this.belongedProjectName = searcher.getProjectByID(projid).getProjectName();//set the project name
-		System.out.println(belongedProjectName);
+//		System.out.println(belongedProjectName);
 		
 		this.programResult = programResult;
 	}

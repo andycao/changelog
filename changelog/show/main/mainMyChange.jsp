@@ -10,6 +10,8 @@
 <title>我的更改</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <link rel="stylesheet" type="text/css" href="../css/welcome_style.css">
+<script src="../js/delete-confirm.js"></script>
+
 </head>
 <body>
 <div id="main">
@@ -39,6 +41,7 @@
 	<p>用户ID：<%=user.getUserID() %></p>
 	<p>权限：<%=user.getTitle() %></p>
 	<p>更改总数：<s:property value="#request.list.size"/></p>
+	<a href="#" onclick="show_confirm('../func/clearAllMyChanges.action')">清空我的记录</a>
 </div>
 </div>
 </div>

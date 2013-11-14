@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ page import="changelog.*;" %>
+<%@ page import="changelog.*,util.myutil;" %>
 <% User user = (User) session.getAttribute("user"); int uid = user.getUserID(); String tit = user.getTitle(); %>
+<%	
+	request.setAttribute("users", myutil.getUsers());
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -46,7 +49,8 @@
 		<table>
 		<tr><th>更改ID</th>
 		<th>更改时间</th>
-		<th>更改人ID</th>
+		<th>更改文件</th>
+		<th>更改人</th>
 		</tr>
 		<s:iterator value="list" status="count">
 			<s:if test="#count.odd==true">
@@ -57,7 +61,8 @@
 			</s:else>
 			<td><a href="getChange.action?changeId=<s:property value="changeId" />"><s:property value="changeId" /></a></td>
 			<td><a href="getChange.action?changeId=<s:property value="changeId" />"><s:date name="changeDate" format="MM-dd"/></a></td>
-			<td><s:property value="userId" /></td>
+			<td><s:property value="changeFile"/></td>
+			<td>${users[userId]}</td>
 			</tr>
 		</s:iterator> 
 		</table>

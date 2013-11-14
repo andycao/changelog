@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+<package name="extFuncActions" namespace="/func" extends="default">
+	<action name="clearAllMyChanges" class="actions.allMyChangeAction" method="clearAllMyChanges">
+		<result name="success" type="redirect">/user/showuser.action</result>
+		<result name="error">./delete_err.jsp</result>
+	</action>
+</package>
+</struts>
