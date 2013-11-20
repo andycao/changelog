@@ -15,7 +15,7 @@
 <div class="show">
 <h3>所有工程</h3>
 <table>
-<tr><th>ID</th>
+<tr>
 	<th>工程名称</th>
 	<th>开始时间</th>
 	<th>更改时间</th>
@@ -27,13 +27,12 @@
 		<s:else>
 		<tr class="alt">
 		</s:else>
-		<td><a href="getProgram.action?programId=<s:property value="programId" />"><s:property value="programId" /></a></td>
 		<td><a href="getProgram.action?programId=<s:property value="programId" />"><s:property value="programName" /></a></td>
-		<td><s:date name="startTime" format="MM-dd"/></td>
-		<td><s:date name="lastChangeTime" format="MM-dd"/></td>
+		<td><s:date name="startTime" format="yyyy-MM-dd"/></td>
+		<td><s:date name="lastChangeTime" format="yyyy-MM-dd"/></td>
 		<td><a href="getProject.action?projectId=<s:property value="projectId" />"><s:property value="projectId" /></a></td>
 		</tr>
-	</s:iterator> 
+	</s:iterator>
 </table>
 <p>总数：<s:property value="#request.list.size" /></p>
 </div>

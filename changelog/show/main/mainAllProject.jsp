@@ -15,10 +15,10 @@
 <div class="show">
 <h3>所有项目</h3>
 <table>
-<tr><th>ID</th>
+<tr>
 	<th>项目名称</th>
 	<th>开始时间</th>
-	<th>更改时间</th></tr>
+	<th>最后更改时间</th></tr>
 	<s:iterator value="list" status="count">
 		<s:if test="#count.odd==true">
 		<tr>
@@ -26,10 +26,9 @@
 		<s:else>
 		<tr class="alt">
 		</s:else>
-		<td><a href="getProject.action?projectId=<s:property value='projectId'/>" target="welcomemain"><s:property value="projectId" /></a></td>
 		<td><a href="getProject.action?projectId=<s:property value='projectId'/>" target="welcomemain"><s:property value="projectName" /></a></td>
-		<td><s:date name="startTime" format="MM-dd"/></td>
-		<td><s:date name="lastChangeTime" format="MM-dd"/></td>
+		<td><s:date name="startTime" format="yyyy-MM-dd"/></td>
+		<td><s:date name="lastChangeTime" format="yyyy-MM-dd"/></td>
 		</tr>
 	</s:iterator> 
 </table>

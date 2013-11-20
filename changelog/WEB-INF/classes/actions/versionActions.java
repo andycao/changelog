@@ -1,17 +1,11 @@
 package actions;
 
+import java.io.Serializable;
 import java.util.List;
 
 import mydbsearcher.mydbsearcher;
-
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 import changelog.Change;
-import changelog.Program;
 import changelog.Version;
-import changelog.myDb;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -36,7 +30,8 @@ public class versionActions extends ActionSupport{
 	 */
 	public String addVersion(){
 		try{
-			searcher.addVersion(versionName, programId, detail);
+			Serializable id = searcher.addVersion(versionName, programId, detail);
+			this.setVersionId((Integer)id);
 			return SUCCESS;
 		}catch(Exception e){
 			return ERROR;

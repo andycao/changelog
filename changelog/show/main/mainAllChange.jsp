@@ -18,10 +18,10 @@
 <div class="show">
 <h3>所有更改内容</h3>
 <table>
-<tr><th>更改ID</th>
+<tr>
+	<th>更改文件</th>
 	<th>所属版本ID</th>
 	<th>更改时间</th>
-	<th>更改文件</th>
 	<th>更改人</th>
 	</tr>
 	<% int i = 1; %>
@@ -32,10 +32,10 @@
 		<s:else>
 		<tr class="alt">
 		</s:else>
-		<td><a href="getChange.action?changeId=<s:property value='changeId' />"><s:property value="changeId" /></a></td>
+		<td><a href="getChange.action?changeId=<s:property value='changeId' />"><s:property value="changeFile"/></a></td>
 		<td><a href="getVersion.action?versionId=<s:property value='versionId' />"><s:property value="versionId" /></a></td>
-		<td><a href="getChange.action?changeId=<s:property value='changeId' />"><s:date name="changeDate" format="MM-dd"/></a></td>
-		<td><s:property value="changeFile"/></td>
+		<td><a href="getChange.action?changeId=<s:property value='changeId' />"><s:date name="changeDate" format="yyyy-MM-dd"/></a></td>
+
 		<td>${users[userId]}</td>
 		</tr>
 	</s:iterator> 

@@ -1,14 +1,17 @@
 package actions;
 
-import java.util.*;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.Map;
 
-import mydbsearcher.*;
-
+import mydbsearcher.UserManager;
+import mydbsearcher.mydbsearcher;
 import changelog.Change;
 import changelog.User;
+
+import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import util.myutil;
 public class changlogActions extends ActionSupport{
 	private int versionId;
 	private int userId;
@@ -30,7 +33,11 @@ public class changlogActions extends ActionSupport{
 	public String addChangelog(){
 		try{
 			//add the change
-			searcher.addChange(versionId, userId, changeDate, changeDetail, changeFile);
+			Serializable id = searcher.addChange(versionId, userId, changeDate, changeDetail, changeFile);
+			
+			//set the new changeid
+			this.setChangeId((Integer)id);
+			
 			//update date
 			//searcher.updateUp(versionId, changeDate);
 			searcher.updateUp(versionId, changeDate);

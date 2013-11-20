@@ -1,6 +1,7 @@
 package actions;
 
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Date;
 import mydbsearcher.mydbsearcher;
@@ -28,7 +29,8 @@ public class programActions extends ActionSupport{
 	
 	public String addProgram(){
 		try{
-			searcher.addProgram(projectId, programName, startTime, detail);
+			Serializable id = searcher.addProgram(projectId, programName, startTime, detail);
+			this.setProgramId((Integer)id);
 		return SUCCESS;
 		}catch(Exception e){
 			return ERROR;

@@ -1,5 +1,7 @@
 package actions;
 import util.myutil;
+
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -24,7 +26,8 @@ public class projectActions extends ActionSupport{
 		try{
 			//searcher extend the add method from mydb
 //			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+startTime);
-			searcher.addProject(projectName, startTime, projectDetail);
+			Serializable id = searcher.addProject(projectName, startTime, projectDetail);
+			this.setProjectId((Integer)id);
 			return SUCCESS;
 		}catch(Exception e){
 			System.err.println(e);

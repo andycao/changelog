@@ -60,25 +60,22 @@
     <!-- add items actions -->
     <package name="changelog_actions" namespace="/func" extends="default">
     	<action name="addProject" class="actions.projectActions" method="addProject">
-    		<result name="success" type="redirect">/show/showAllProject.action</result>
+    		<result name="success" type="redirect">/show/getProject.action?projectId=${projectId}</result>
     		<result name="error" >adderror.jsp</result>
     		<result name="input">addProject.jsp</result>
     	</action>
     	<action name="addProgram" class="actions.programActions" method="addProgram">
-    		<result name="success" type="redirect">/show/getProject.action?projectId=${projectId}
-    		</result>
+    		<result name="success" type="redirect">/show/getProgram.action?programId=${programId}</result>
     		<result name="error">adderror.jsp</result>
     		<result name="input">addProgram.jsp</result>
     	</action>
     	<action name="addVersion" class="actions.versionActions" method="addVersion">
-    		<result name="success" type="redirect">/show/getProgram.action?programId=${programId}
-    		</result>
+    		<result name="success" type="redirect">/show/getVersion.action?versionId=${versionId}</result>
     		<result name="error">adderror.jsp</result>
     		<result name="input">addVersion.jsp</result>
     	</action>
     	<action name="addChangelog" class="actions.changlogActions" method="addChangelog">
-    		<result name="success" type="redirect">/show/getVersion.action?versionId=${versionId}
-    		</result>
+    		<result name="success" type="redirect">/show/getChange.action?changeId=${changeId}</result>
     		<result name="error">adderror.jsp</result>
     		<result name="input">addChangelog.jsp</result>
     	</action>

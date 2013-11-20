@@ -47,7 +47,7 @@
 		<div class="lists">
 		<h3>更改记录列表</h3>
 		<table>
-		<tr><th>更改ID</th>
+		<tr>
 		<th>更改时间</th>
 		<th>更改文件</th>
 		<th>更改人</th>
@@ -59,12 +59,11 @@
 			<s:else>
 				<tr class="alt">
 			</s:else>
-			<td><a href="getChange.action?changeId=<s:property value="changeId" />"><s:property value="changeId" /></a></td>
 			<td><a href="getChange.action?changeId=<s:property value="changeId" />"><s:date name="changeDate" format="MM-dd"/></a></td>
 			<td><s:property value="changeFile"/></td>
 			<td>${users[userId]}</td>
 			</tr>
-		</s:iterator> 
+		</s:iterator>
 		</table>
 		</div>
 	</div>

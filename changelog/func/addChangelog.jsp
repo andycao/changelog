@@ -23,9 +23,8 @@
 	<s:form method="post" action="addChangelog.action">
 		<s:textfield name="versionId" label="所属版本ID" value="%{#versionid}" readonly="%{#disable}"></s:textfield>
 		<s:textfield name="userId" label="更改人ID" value="%{#userid}" readonly="%{#disable}"></s:textfield>
-	
 		<s:textfield name="changeDate" label="更改时间" onclick="WdatePicker()"></s:textfield>
-		<s:textarea name="changeFile" label="更改文件地址" rows="5" cols="45"></s:textarea>
+		<s:textarea name="changeFile" label="更改文件" rows="5" cols="45"></s:textarea>
 		<s:textarea name="changeDetail" label="更改详细信息" rows="11" cols="45"></s:textarea>
 	</s:form>
 	<div class="buttons">

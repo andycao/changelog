@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <link rel="stylesheet" type="text/css" href="../css/welcome_style.css">
 </head>
-<body>	
+<body>
 <div id="main">
 <div class="show">
 <h3>近期更改内容</h3>
@@ -33,7 +33,7 @@
 		</s:else>
 		<td><a href="getChange.action?changeId=<s:property value='changeId' />"><s:property value="changeId" /></a></td>
 		<td><a href="getVersion.action?versionId=<s:property value='versionId' />"><s:property value="versionId" /></a></td>
-		<td><a href="getChange.action?changeId=<s:property value='changeId' />"><s:date name="changeDate" format="MM-dd"/></a></td>
+		<td><a href="getChange.action?changeId=<s:property value='changeId' />"><s:date name="changeDate" format="yyyy-MM-dd"/></a></td>
 		<td><s:property value="changeFile"/></td>
 		<td>${users[userId] }</td>
 		</tr>
